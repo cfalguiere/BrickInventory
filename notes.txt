@@ -1,0 +1,44 @@
+tuto utilisé
+http://www.toptal.com/angular-js/a-step-by-step-guide-to-your-first-angularjs-app
+
+vagrant init ubuntu/trusty64
+sudo apt-get update
+sudo apt-get install nodejs
+sudo apt-get install nodejs-legacy (to fix the This failure might be due to the use of legacy binary "node" issue)
+sudo apt-get install npm 
+sudo apt-get install git
+
+worl around -a localhost in vm (symptome ça marche en local et ça ne marche pas depuis l'hote)
+sudo npm install -g http-server
+http-server  -p 8000
+
+
+###
+# install yeoman
+
+npm install -g yo bower grunt-cli
+
+npm install -g generator-angular
+
+mkdir my-yo-project
+
+yo angular
+
+# scaffolding
+yo angular:controller myController
+yo angular:directive myDirective
+yo angular:filter myFilter
+yo angular:service myService
+
+# dependency management
+bower search jquery-pjax
+bower install jquery-pjax --save
+
+grunt bower
+grunt wiredep
+
+# preview
+grunt serve
+
+# build
+grunt
