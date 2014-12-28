@@ -6,9 +6,9 @@ sudo apt-get update
 sudo apt-get install nodejs
 sudo apt-get install nodejs-legacy (to fix the This failure might be due to the use of legacy binary "node" issue)
 sudo apt-get install npm 
-sudo apt-get install git
+sudo apt-get install git (required by bower)
 
-worl around -a localhost in vm (symptome ça marche en local et ça ne marche pas depuis l'hote)
+work around -a localhost in vm (symptome ça marche en local et ça ne marche pas depuis l'hote)
 sudo npm install -g http-server
 http-server  -p 8000
 
