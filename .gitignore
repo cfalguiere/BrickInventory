@@ -26,3 +26,16 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+# Angular
+logs/*
+!.gitkeep
+node_modules/
+bower_components/
+tmp
+
+# Mac
+.DS_Store
+
+# IDE
+.idea
