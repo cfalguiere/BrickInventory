@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Brick Inventory</title>
+    <title>Brick Inventory</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body ng-app="BrickInventoryApp" ng-controller="bricksController">
+    <div class="panel panel-default">
+        <div class="panel-heading">Brick Inventory</div>
+            <div class="panel-body">
+
   <table>
     <thead>
       <tr><th colspan="2"></th>
@@ -25,7 +30,7 @@
         <td align="center">{{brick.colorId}}</td>
         <td>{{brick.itemName}}</td>
         <td align="center">{{brick.count}}/{{brick.quantity}} </td>
-	    <td><a ng-click="found(brick)">[Found]</a></td>
+	    <td><button class="btn btn-default" ng-click="found(brick)">Found</button></td>
       </tr>
     </tbody>
   </table>
@@ -34,5 +39,8 @@
   <script src="app.js"></script>
   <!--<script src="js/services.js"></script>-->
     <script src="controllers.js"></script>
+             </div>
+        </div>
+    </div>
 </body>
 </html>
