@@ -39,3 +39,7 @@ tmp
 
 # IDE
 .idea
+
+# Vagrant
+.vagrant
+
