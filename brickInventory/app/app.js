@@ -12,7 +12,8 @@
 //}]);
 
 angular.module('BrickInventoryApp', [
-  'BrickInventoryApp.controllers'
+  'BrickInventoryApp.controllers',
+  'BrickInventoryApp.factories'
 ]);
 
 

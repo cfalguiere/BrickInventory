@@ -30,3 +30,5 @@ angular.module('BrickInventoryApp.controllers', [])
 });
 
 
+
+
