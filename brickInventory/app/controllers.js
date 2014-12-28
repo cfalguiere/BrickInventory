@@ -1,37 +1,32 @@
-angular.module('F1FeederApp.controllers', [])
-  .controller('driversController', function($scope) {
-    $scope.driversList = [
+
+angular.module('BrickInventoryApp.controllers', [])
+  .controller('bricksController', function($scope) {
+    $scope.bricksList = [
       {
-          Driver: {
-              givenName: 'Sebastian',
-              familyName: 'Vettel'
-          },
-          points: 322,
-          nationality: "German",
-          Constructors: [
-              {name: "Red Bull"}
-          ],
-	  found: 0,
-	  show: true
+        itemType: "S",
+        itemId: "9581-1",
+        itemName: "WeDo Robotics USB Hub",
+        quantity: 1,
+        colorId: 0,
+ 	      count: 0,
+	      show: true
       },
       {
-          Driver: {
-          givenName: 'Fernando',
-              familyName: 'Alonso'
-          },
-          points: 207,
-          nationality: "Spanish",
-          Constructors: [
-              {name: "Ferrari"}
-          ],
-	  found: 0,
-	  show: true
+        itemType: "S",
+        itemId: "9583-1",
+        itemName: "WeDo Robotics Motion Sensor",
+        quantity: 1,
+        colorId: 0,
+ 	      count: 0,
+	      show: true
       }
     ];
 
-    $scope.found = function(driver) {
-	// Hides a row of brick, if the found button was clicked
-	alert("Found the " + driver.name);
-	return driver.show = false;
+    $scope.found = function(brick) {
+	    // Hides a row of brick, if the found button was clicked
+	    alert("Found the " + brick.itemName);
+      return brick.show = (brick.count >= brick.quantity);
     };
 });
+
+

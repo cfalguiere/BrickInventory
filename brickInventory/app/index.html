@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>F-1 Feeder</title>
+  <title>Brick Inventory</title>
 </head>
 
-<body ng-app="F1FeederApp" ng-controller="driversController">
+<body ng-app="BrickInventoryApp" ng-controller="bricksController">
   <table>
     <thead>
-      <tr><th colspan="7">Drivers Championship Standings</th></tr>
+      <tr><th colspan="2"></th>
+          <th>Id</th>
+          <th>Type</th>
+          <th>Color</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th></th>
+        </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="driver in driversList" ng-show="driver.show">
+      <tr ng-repeat="brick in bricksList" ng-show="brick.show">
         <td>{{$index + 1}}</td>
-        <td>
-	  <img src="img/flags/{{driver.Driver.nationality}}.png" />
-	</td>
-	<td>
-          {{driver.Driver.givenName}}&nbsp;{{driver.Driver.familyName}}
-        </td>
-        <td>{{driver.Constructors[0].name}}</td>
-        <td>{{driver.points}}</td>
-	<td>{{driver.found}}</td>
-	<td><a ng-click="found(driver)">Found</a></td>
+        <td><img src="img/bricks/{{brick.itemId}}.gif" /></td>
+	    <td>{{brick.itemId}}</td>
+	    <td>{{brick.itemType}}</td>
+        <td>{{brick.colorId}}</td>
+        <td>{{brick.itemName}}</td>
+        <td align="center">{{brick.count}}/{{brick.quantity}} </td>
+	    <td><a ng-click="found(brick)">[Found]</a></td>
       </tr>
     </tbody>
   </table>
@@ -29,6 +33,6 @@
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
   <!--<script src="js/services.js"></script>-->
-  <script src="controllers.js"></script>
+    <script src="controllers.js"></script>
 </body>
 </html>
