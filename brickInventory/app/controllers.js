@@ -44,11 +44,21 @@ angular.module('BrickInventoryApp.controllers', [])
       }
     };
 
-    $scope.resetSet = function() {
+    $scope.resetFilters = function() {
 	    // reset all count to 0 and all show to true
-	    angular.forEach($scope.bricksList, function(item) {
-        item.count = 0;
-        item.show = true;
+	    angular.forEach($scope.bricksList, function(brick) {
+        brick.colorFilter = true;
+        brick.shapeFilter = true;
+      } )
+    };
+
+    $scope.resetCount = function() {
+	    // reset all count to 0 and all show to true
+	    angular.forEach($scope.bricksList, function(brick) {
+        brick.colorFilter = true;
+        brick.shapeFilter = true;
+        brick.count = 0;
+        brick.show = true;
       } )
     };
 });

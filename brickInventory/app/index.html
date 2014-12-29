@@ -8,13 +8,19 @@
 <body ng-app="BrickInventoryApp" ng-controller="bricksController" >
     <div class="panel panel-default">
         <div class="panel-heading">Brick Inventory</div>
-            <div class="panel-body">
+            <div class="panel-body" style="float:left">
 
-                <form ng-submit="resetSet()" >
-                   <input type="submit" value="Reset">
-                   &nbsp;
+                <form ng-submit="resetCount()" >
+                   <input type="submit" value="Reset Count">
+                </form>
+            </div>
+
+            <div class="panel-body">
+              <form ng-submit="resetFilters()" >
+                    &nbsp;
                    Filters:
                    &nbsp;
+                   <input type="submit" value="Reset Filters">
                    <select ng-model="selectedColor" ng-options="color.name for color in colorsList"
                            ng-click="filterByColor(selectedColor)">
                        <option value="">-- choose color --</>
