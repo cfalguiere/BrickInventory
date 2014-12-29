@@ -8,7 +8,7 @@ describe('colorsService test', function(){
 
           var brickList = [ { colorId: 5 }, { colorId: 0 } ];
 
-          expect( colorsService.selectColors(brickList) ).toEqual( [ { name: "red", id:5}, { name: "undefined", id:0 } ]) ;
+          expect( colorsService.selectColors(brickList) ).toEqual( [ { name: "Red", id:5}, { name: "Undefined", id:0 } ]) ;
 
         }))
     })
@@ -18,7 +18,7 @@ describe('colorsService test', function(){
         beforeEach(module('BrickInventoryApp.services'));
         it('returns 5 0', inject(function(colorsService){
 
-          var brickList = [ { colorId: 5 }, { colorId: 0 } ];
+          var brickList = [ { colorId: 5 }, { colorId: 5 }, { colorId: 0 } ];
 
           expect( colorsService.selectColorIds(brickList) ).toEqual( [ 5, 0 ] ) ;
 
@@ -28,9 +28,9 @@ describe('colorsService test', function(){
 
     describe('when I call getColorName(5)', function(){
         beforeEach(module('BrickInventoryApp.services'));
-        it('returns red', inject(function(colorsService){
+        it('returns Red', inject(function(colorsService){
 
-          expect( colorsService.getColorName(5) ).toEqual( "red" ) ;
+          expect( colorsService.getColorName(5) ).toEqual( "Red" ) ;
 
         }))
     })
@@ -41,7 +41,7 @@ describe('colorsService test', function(){
 
           var brickList = [ { colorId: 5 } ];
           colorsService.fillColorNames(brickList)
-          expect( brickList ).toEqual(  [ { colorId: 5, colorName: "red" } ] ) ;
+          expect( brickList ).toEqual(  [ { colorId: 5, colorName: "Red" } ] ) ;
 
         }))
     })
