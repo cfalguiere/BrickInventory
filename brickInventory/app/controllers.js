@@ -12,10 +12,15 @@ angular.module('BrickInventoryApp.controllers', [])
     };
 
     $scope.filterByColor = function(selectedColor) {
-	    alert("Filter by color " + selectedColor.name);
-	    angular.forEach($scope.bricksList, function(item) {
-        item.colorFilter = (item.colorId == selectedColor.id);
-      } )
+      if (selectedColor == null) {
+        angular.forEach($scope.bricksList, function(item) {
+          item.colorFilter = true;
+        } )
+      } else {
+        angular.forEach($scope.bricksList, function(item) {
+          item.colorFilter = (item.colorId == selectedColor.id);
+        } )
+      }
     };
 
     $scope.resetSet = function() {

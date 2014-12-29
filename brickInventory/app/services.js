@@ -11,22 +11,13 @@ angular.module('BrickInventoryApp.services', [])
        {name:'undefined', id:0}
      ];
 
-    function getColorNameF(id) {
+    this.getColorName = function(id) {
+      function match(anId) {
+        return anId == id;
+      }
       return colors
-              .filter( function (element, id) { return element.id == id; } )
-              .map( function (element) {return element.name;} );
-    }
-
-    function getColorName(id) {
-        var found = false;
-        var name = "UNKNOWN";
-        for(var i = 0; i < colors.length; i++ && !found) {
-           var item = colors[i];
-           if (item.id == id) {
-               found = true;
-               name = item.name;
-           }
-        }
+              .filter( function (element) { return match(element.id); } )
+              .map( function (element) {return element.name;} )[0];
     }
 
 
@@ -57,10 +48,6 @@ angular.module('BrickInventoryApp.services', [])
         return colorIdIndex.indexOf(id) > -1;
       }
 
-      /*
-      angular.forEach(colorIdIndex, function(colorId) {
-          colorList.push({name: getColorName(5), id: colorId});
-      });*/
 
       colorList = colors.filter( function (element) { return isInIndex(element.id); } )
 

@@ -20,7 +20,17 @@ describe('colorsService test', function(){
 
           var brickList = [ { colorId: 5 }, { colorId: 0 } ];
 
-          expect( colorsService.selectColorIds(brickList) ).toEqual( [ 5, 0 ]) ;
+          expect( colorsService.selectColorIds(brickList) ).toEqual( [ 5, 0 ] ) ;
+
+        }))
+    })
+
+
+    describe('when I call getColorNameF(5)', function(){
+        beforeEach(module('BrickInventoryApp.services'));
+        it('returns red', inject(function(colorsService){
+
+          expect( colorsService.getColorName(5) ).toEqual( "red" ) ;
 
         }))
     })
