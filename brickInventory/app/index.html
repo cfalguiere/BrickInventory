@@ -16,7 +16,7 @@
             </div>
 
            <div class="panel-body">
-  <table>
+  <table class="table">
     <thead>
       <tr><th colspan="2"></th>
           <th>Id</th>
@@ -32,10 +32,10 @@
         <td>{{$index + 1}}</td>
         <td><img src="img/bricks/{{brick.itemId}}.gif" /></td>
 	    <td>{{brick.itemId}}</td>
-	    <td align="center">{{brick.itemType}}</td>
-        <td align="center">{{brick.colorId}}</td>
+	    <td>{{brick.itemType}}</td>
+        <td>{{brick.colorId}}</td>
         <td>{{brick.itemName}}</td>
-        <td align="center">{{brick.count}}/{{brick.quantity}} </td>
+        <td>{{brick.count}}/{{brick.quantity}} </td>
 	    <td><button class="btn btn-default" ng-click="found(brick)">Found</button></td>
       </tr>
     </tbody>
