@@ -19,6 +19,10 @@
                            ng-click="filterByColor(selectedColor)">
                        <option value="">-- choose color --</>
                    </select>
+                   <select ng-model="selectedShape" ng-options="shape for shape in shapesList"
+                           ng-click="filterByShape(selectedShape)">
+                      <option value="">-- choose shape --</>
+                   </select>
                 </form>
             </div>
 
@@ -37,7 +41,7 @@
         </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="brick in bricksList" ng-show="(brick.show && brick.colorFilter)">
+      <tr ng-repeat="brick in bricksList" ng-show="(brick.show && brick.colorFilter && brick.shapeFilter)">
         <td>{{$index + 1}}</td>
         <td><img src="img/bricks/{{brick.itemId}}.gif" /></td>
 	    <td>{{brick.itemId}}</td>

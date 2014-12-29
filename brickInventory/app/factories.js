@@ -20,6 +20,7 @@ angular.module('BrickInventoryApp.factories', [])
         groupName: groupName,
  	      count: 0,
 	      colorFilter: true,
+	      shapeFilter: true,
 	      show: true
       };
     }
