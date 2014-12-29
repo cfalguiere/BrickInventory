@@ -17,6 +17,7 @@ angular.module('BrickInventoryApp.factories', [])
         itemName: name,
         quantity: qty,
         colorId: colorId,
+        colorName: "UNSET",
         groupName: groupName,
  	      count: 0,
 	      colorFilter: true,

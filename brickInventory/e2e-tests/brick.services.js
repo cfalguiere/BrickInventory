@@ -35,6 +35,17 @@ describe('colorsService test', function(){
         }))
     })
 
+    describe('when I call fillColorNames', function(){
+        beforeEach(module('BrickInventoryApp.services'));
+        it('th bricks have colorNames', inject(function(colorsService){
+
+          var brickList = [ { colorId: 5 } ];
+          colorsService.fillColorNames(brickList)
+          expect( brickList ).toEqual(  [ { colorId: 5, colorName: "red" } ] ) ;
+
+        }))
+    })
+
 });
 
 describe('shapesService test', function(){

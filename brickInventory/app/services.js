@@ -1,15 +1,16 @@
 var bricksServiceModule = angular.module('BrickInventoryApp.services', []);
 
 bricksServiceModule.service("colorsService", function() {
+     var self = this;
 
      var colors = [
-       {name:'black', id:999},
-       {name:'white', id:999},
-       {name:'red', id:5},
-       {name:'brown', id:88},
-       {name:'green', id:999},
-       {name:'yellow', id:999},
-       {name:'undefined', id:0}
+       {name:'Black', id:999},
+       {name:'White', id:999},
+       {name:'Red', id:5},
+       {name:'Brown', id:88},
+       {name:'Green', id:999},
+       {name:'Yellow', id:999},
+       {name:'Undefined', id:0}
      ];
 
     this.getColorName = function(id) {
@@ -54,6 +55,13 @@ bricksServiceModule.service("colorsService", function() {
 
 
       return colorList;
+    }
+
+
+    this.fillColorNames = function(brickList) {
+      angular.forEach( brickList, function(brick) {
+        brick.colorName = self.getColorName(brick.colorId);
+      });
     }
 
 });
