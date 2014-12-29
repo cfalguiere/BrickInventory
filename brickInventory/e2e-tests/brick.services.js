@@ -26,7 +26,7 @@ describe('colorsService test', function(){
     })
 
 
-    describe('when I call getColorNameF(5)', function(){
+    describe('when I call getColorName(5)', function(){
         beforeEach(module('BrickInventoryApp.services'));
         it('returns red', inject(function(colorsService){
 
@@ -34,5 +34,21 @@ describe('colorsService test', function(){
 
         }))
     })
+
+});
+
+describe('shapesService test', function(){
+
+    describe('when I call selectShapes', function(){
+        beforeEach(module('BrickInventoryApp.services'));
+        it('returns a list of shapes', inject(function(shapesService){
+
+          var brickList = [ { groupName: "Brick" }, { groupName: "Brick" }, { groupName: "Minifigure" } ];
+
+          expect( shapesService.selectShapes(brickList) ).toEqual( [ "Brick", "Minifigure"  ]) ;
+
+        }))
+    })
+
 
 });

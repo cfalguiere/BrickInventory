@@ -1,5 +1,6 @@
-angular.module('BrickInventoryApp.services', [])
-  .service("colorsService", function() {
+var bricksServiceModule = angular.module('BrickInventoryApp.services', []);
+
+bricksServiceModule.service("colorsService", function() {
 
      var colors = [
        {name:'black', id:999},
@@ -53,6 +54,29 @@ angular.module('BrickInventoryApp.services', [])
 
 
       return colorList;
+    }
+
+});
+
+bricksServiceModule.service("shapesService", function() {
+
+     function uniqueShapes(brickList) {
+        var seen = {};
+        var out = [];
+        var len = brickList.length;
+        var k = 0;
+        for(var i = 0; i < len; i++) {
+           var item = brickList[i].groupName;
+           if (seen[item] !== 1) {
+               seen[item] = 1;
+               out[k++] = item;
+           }
+        }
+        return out;
+    }
+
+    this.selectShapes = function(brickList) {
+      return uniqueShapes(brickList);
     }
 
 });
