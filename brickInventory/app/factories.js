@@ -1,7 +1,28 @@
 angular.module('BrickInventoryApp.factories', [])
-  .factory("Brick",function() {
+  .factory("bricksFactory", function() {
 
-  var Brick = function(typ, id, name, qty, colorId) {
+  var brickList = [
+      {
+        itemType: "S",
+        itemId: "9581-1",
+        itemName: "WeDo Robotics USB Hub",
+        quantity: 1,
+        colorId: 0,
+ 	      count: 0,
+	      show: true
+      },
+      {
+        itemType: "S",
+        itemId: "9583-1",
+        itemName: "WeDo Robotics Motion Sensor",
+        quantity: 1,
+        colorId: 0,
+ 	      count: 0,
+	      show: true
+      }
+    ];
+  /*
+  = function(typ, id, name, qty, colorId) {
 
     this.initialize = function() {
       var self = this;
@@ -16,8 +37,8 @@ angular.module('BrickInventoryApp.factories', [])
 
     // Call the initialize function for every new instance
     this.initialize();
-  };
+  };*/
 
   // Return a reference to the function
-  return (Brick);
+  return brickList;
 });
