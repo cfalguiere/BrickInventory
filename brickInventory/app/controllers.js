@@ -1,14 +1,16 @@
 
 angular.module('BrickInventoryApp.controllers', [])
   .controller('bricksController', function($scope, bricksFactory, colorsService, shapesService) {
+    var self = this;
+
     $scope.bricksList = bricksFactory;
     colorsService.fillColorNames($scope.bricksList);
 
     $scope.colorsList = colorsService.selectColors($scope.bricksList);
-    $scope.selectedColor = 0;
+    $scope.selectedColor = null;
 
     $scope.shapesList = shapesService.selectShapes($scope.bricksList);
-    $scope.selectedShape = 0;
+    $scope.selectedShape = null;
 
     $scope.found = function(brick) {
 	    // Hides a row of brick, if the found button was clicked
@@ -50,16 +52,17 @@ angular.module('BrickInventoryApp.controllers', [])
         brick.colorFilter = true;
         brick.shapeFilter = true;
       } )
+      $scope.selectedColor = null;
+      $scope.selectedShape = null;
     };
 
     $scope.resetCount = function() {
 	    // reset all count to 0 and all show to true
 	    angular.forEach($scope.bricksList, function(brick) {
-        brick.colorFilter = true;
-        brick.shapeFilter = true;
         brick.count = 0;
         brick.show = true;
       } )
+      self.resetFilters();
     };
 });
 
