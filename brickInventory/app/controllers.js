@@ -1,12 +1,21 @@
 
 angular.module('BrickInventoryApp.controllers', [])
-  .controller('bricksController', function($scope, bricksFactory) {
+  .controller('bricksController', function($scope, bricksFactory, colorsService) {
     $scope.bricksList = bricksFactory;
+    $scope.colorsList = colorsService.selectColors($scope.bricksList);
+    $scope.selectedColor = 0;
 
     $scope.found = function(brick) {
 	    // Hides a row of brick, if the found button was clicked
 	    alert("Found the " + brick.itemName);
       return brick.show = (brick.count >= brick.quantity);
+    };
+
+    $scope.filterByColor = function(selectedColor) {
+	    alert("Filter by color " + selectedColor.name);
+	    angular.forEach($scope.bricksList, function(item) {
+        item.colorFilter = (item.colorId == selectedColor.id);
+      } )
     };
 
     $scope.resetSet = function() {
