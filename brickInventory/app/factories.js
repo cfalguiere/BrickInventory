@@ -1,44 +1,26 @@
 angular.module('BrickInventoryApp.factories', [])
   .factory("bricksFactory", function() {
 
-  var brickList = [
-      {
-        itemType: "S",
-        itemId: "9581-1",
-        itemName: "WeDo Robotics USB Hub",
-        quantity: 1,
-        colorId: 0,
+    var brickList = [];
+
+    function buildBrick(typ, id, name, qty, colorId) {
+      return {
+        itemType: typ,
+        itemId: id,
+        itemName: name,
+        quantity: qty,
+        colorId: colorId,
  	      count: 0,
 	      show: true
-      },
-      {
-        itemType: "S",
-        itemId: "9583-1",
-        itemName: "WeDo Robotics Motion Sensor",
-        quantity: 1,
-        colorId: 0,
- 	      count: 0,
-	      show: true
-      }
-    ];
-  /*
-  = function(typ, id, name, qty, colorId) {
+      };
+    }
 
-    this.initialize = function() {
-      var self = this;
-      self.itemType = typ;
-      self.itemId = id;
-      self.itemName = name;
-      self.quantity = qty;
-      self.colorId = colorId;
- 	    self.count =  0;
-	    self.show = true;
-    };
+    brickList.push(buildBrick("S", "9581-1", "WeDo Robotics USB Hub", 1, 0));
+    brickList.push(buildBrick("S", "9583-1", "WeDo Robotics Motion Sensor", 1, 0));
+    brickList.push(buildBrick("S", "9584-1",	"WeDo Robotics Tilt Sensor",	1,	0));
+    brickList.push(buildBrick("P", "970c00",	"Hips and Legs",	1,	88));
+    brickList.push(buildBrick("P", "3010",	"Brick 1 x 4",	2,	5));
+    brickList.push(buildBrick("P", "3003", "Brick 2 x 2", 2,	5));
 
-    // Call the initialize function for every new instance
-    this.initialize();
-  };*/
-
-  // Return a reference to the function
-  return brickList;
+    return brickList;
 });
