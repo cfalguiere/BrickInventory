@@ -13,9 +13,9 @@ angular.module('BrickInventoryApp.controllers', [])
     $scope.selectedShape = null;
 
     $scope.found = function(brick) {
-	    // Hides a row of brick, if the found button was clicked
-	    //alert("Found the " + brick.itemName);
-      return brick.show = (brick.count >= brick.quantity);
+	    //alert("Found " + brick.itemName);
+      brick.count++;
+      brick.show = (brick.count < brick.quantity);
     };
 
     $scope.colorName = function(id) {
