@@ -2,13 +2,14 @@ angular.module('BrickInventoryApp.factories', [])
   .factory("bricksFactory", function() {
 
     var brickList = [];
+    /*
     var colorIds = [];
 
     function registerColorId(colorId) {
       if ($.inArray(colorId, colorIds) < 0) {
         colorIds.push(colorId);
       }
-    }
+    }*/
 
     function buildBrick(typ, id, name, qty, colorId, groupName) {
        return {
