@@ -57,12 +57,6 @@ angular.module('BrickInventoryApp.services', [])
     }
 
 
-    this.fillColorNames = function(brickList) {
-      angular.forEach( brickList, function(brick) {
-        brick.colorName = self.getColorName(brick.colorId);
-      });
-    }
-
 })
 
 .service("shapesService", function() {
