@@ -4,7 +4,7 @@ angular.module('BrickInventoryApp.controllers', [])
     var self = this;
 
     $scope.bricksList = bricksFactory;
-    colorsService.fillColorNames($scope.bricksList);
+    //$scope.colorsList = colorsService.fillColorNames($scope.bricksList);
 
     $scope.colorsList = colorsService.selectColors($scope.bricksList);
     $scope.selectedColor = null;
@@ -16,10 +16,6 @@ angular.module('BrickInventoryApp.controllers', [])
 	    //alert("Found " + brick.itemName);
       brick.count++;
       brick.show = (brick.count < brick.quantity);
-    };
-
-    $scope.colorName = function(id) {
-      return colorsService.getColorName(id);
     };
 
     $scope.filterByColor = function(selectedColor) {

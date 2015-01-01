@@ -1,24 +1,18 @@
 angular.module('BrickInventoryApp.factories', [])
-  .factory("bricksFactory", function() {
+  .factory("bricksFactory", function(colorsService) {
 
     var brickList = [];
-    /*
-    var colorIds = [];
-
-    function registerColorId(colorId) {
-      if ($.inArray(colorId, colorIds) < 0) {
-        colorIds.push(colorId);
-      }
-    }*/
 
     function buildBrick(typ, id, name, qty, colorId, groupName) {
+       var colorName = colorsService.getColorName(colorId);
+
        return {
         itemType: typ,
         itemId: id,
         itemName: name,
         quantity: qty,
         colorId: colorId,
-        colorName: "UNSET",
+        colorName: colorName,
         groupName: groupName,
  	      count: 0,
 	      colorFilter: true,
