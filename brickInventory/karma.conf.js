@@ -10,7 +10,8 @@ module.exports = function(config){
       'app/components/**/*.js',
       //'app/view*/**/*.js',
       'app/*.js',
-      'test/unit/*.js'
+      'test/unit/*.js',
+      'test/integration/*.js'
     ],
 
     autoWatch : true,
