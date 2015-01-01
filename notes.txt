@@ -1,21 +1,11 @@
 tuto utilisé
 http://www.toptal.com/angular-js/a-step-by-step-guide-to-your-first-angularjs-app
 
-vagrant init ubuntu/trusty64
-
-http-server  -p 8000
-
-npm test pour lancer les tests avec la config angular-seed
 
 sudo npm install -g jasmine-node -> installé après je ne sais pas si c'est un prérequis de karma, pas utilisé
 
 
-### pas utilisé
-# install yeoman
-
-npm install -g yo bower grunt-cli
-
-npm install -g generator-angular
+### yeoman
 
 mkdir my-yo-project
 
