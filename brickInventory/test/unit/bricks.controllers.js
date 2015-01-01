@@ -6,7 +6,7 @@ describe('bricksController test', function(){
       var scope = {}
       var ctrl = $controller('bricksController', {$scope:scope});
 
-      expect(scope.bricksList.length).toBe(6);
+      expect(scope.bricksList.length).toBe(12);
     }))
 
 
@@ -14,7 +14,7 @@ describe('bricksController test', function(){
       var scope = {}
       var ctrl = $controller('bricksController', {$scope:scope});
 
-      expect(scope.shapesList.length).toBe(3);
+      expect(scope.shapesList.length).toBe(4);
     }))
 
     it('should create colorsList with 3 colors', inject(function($controller) {
