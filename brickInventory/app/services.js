@@ -1,6 +1,5 @@
-var bricksServiceModule = angular.module('BrickInventoryApp.services', []);
-
-bricksServiceModule.service("colorsService", function() {
+angular.module('BrickInventoryApp.services', [])
+  .service("colorsService", function() {
      var self = this;
 
      var colors = [
@@ -64,9 +63,9 @@ bricksServiceModule.service("colorsService", function() {
       });
     }
 
-});
+})
 
-bricksServiceModule.service("shapesService", function() {
+.service("shapesService", function() {
 
      function uniqueShapes(brickList) {
         var seen = {};
