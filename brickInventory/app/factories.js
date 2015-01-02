@@ -34,6 +34,11 @@ angular.module('BrickInventoryApp.factories', [])
     brickList.push(buildBrick("P",	"4185",	"Technic Wedge Belt Wheel (Pulley)",	2,	34, "Misc"))
     brickList.push(buildBrick("P",	"70162",	"Technic Wedge Belt Wheel Tire",	2,	11, "Misc"))
 
+    brickList.push(buildBrick("P",	"3743",	"Technic, Gear Rack 1 x 4", 2,	1,	"Gear"))
+    brickList.push(buildBrick("P",	"4519",	"Technic, Axle 3",	2,	86,	"Axle"))
+    brickList.push(buildBrick("P",	"3706",	"Technic, Axle 6",	2,	11,	"Axle"))
+    brickList.push(buildBrick("P",	"3707",	"Technic, Axle 8",	2,	11,	"Axle"))
+
     return brickList;
 });
 

@@ -72,9 +72,9 @@ describe('bricksFactory test', function(){
     describe('when I call factory', function(){
         beforeEach(module('BrickInventoryApp.services'));
         beforeEach(module('BrickInventoryApp.factories'));
-        it('returns a list of 12 bricks', inject(function(bricksFactory){
+        it('returns a list of 16 bricks', inject(function(bricksFactory){
 
-           expect( bricksFactory.length ).toEqual( 12 ) ;
+           expect( bricksFactory.length ).toEqual( 16 ) ;
 
         }))
     })
@@ -82,7 +82,7 @@ describe('bricksFactory test', function(){
     describe('when I call factory', function(){
         beforeEach(module('BrickInventoryApp.services'));
         beforeEach(module('BrickInventoryApp.factories'));
-        it('returns a list of 12 bricks with colorNames', inject(function(bricksFactory){
+        it('bricks have colorNames', inject(function(bricksFactory){
 
            expect( bricksFactory[4].colorName ).toEqual( "Red" ) ;
 
