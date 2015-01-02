@@ -9,7 +9,8 @@ echo 'Updating apt'
 echo '######################'
 
 sudo apt-get update
-sudo locale-gen UTF-8
+sudo locale-gen en_US.UTF-8
+sudo locale-gen fr_FR.UTF-8
 
 echo '######################'
 echo 'Installing node packages'

@@ -12,7 +12,7 @@ describe('BrickInventory End-2-End App', function() {
 
       var brickList = element.all(by.repeater('brick in bricksList'));
 
-      expect(brickList.count()).toBe(12);
+      expect(brickList.count()).toBe(16);
    });
 
     /*
