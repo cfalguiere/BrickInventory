@@ -6,9 +6,9 @@ describe('colorsService test', function(){
         beforeEach(module('BrickInventoryApp.services'));
         it('returns a list of color tuples', inject(function(colorsService){
 
-          var brickList = [ { colorId: 5 }, { colorId: 0 } ];
+          var brickList = [  { colorId: 0 }, { colorId: 5 } ];
 
-          expect( colorsService.selectColors(brickList) ).toEqual( [ { name: "Red", id:5}, { name: "Undefined", id:0 } ]) ;
+          expect( colorsService.selectColors(brickList) ).toEqual( [ { name: "Undefined", id:0 }, { name: "Red", id:5} ]) ;
 
         }))
     })

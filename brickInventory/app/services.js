@@ -17,8 +17,7 @@ angular.module('BrickInventoryApp.services', [])
       function match(anId) {
         return anId == id;
       }
-      matches = colors
-              .filter( function (element) { return match(element.id); } )
+      matches = colors.filter( function (element) { return match(element.id); } )
 
       if (matches.length == 1)
         name = matches[0].name;

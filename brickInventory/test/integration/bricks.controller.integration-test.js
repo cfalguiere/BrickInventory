@@ -1,42 +1,40 @@
-describe('bricksController test', function(){
+describe('bricksController integration test', function(){
+    var scope
+    var ctrl
+    var bricksList
 
     beforeEach(module('BrickInventoryApp'));
 
-    describe('bricksController and bricksFactory integration test', function(){
+    beforeEach( inject(function($controller)  {
+      scope = {}
+      ctrl = $controller('bricksController', {$scope:scope});
+      bricksList = scope.bricksList;
+    }))
 
-        beforeEach(module('BrickInventoryApp'));
+    describe('bricksController and bricksFactory', function(){
 
-        it('should create brickList with 12 bricks', inject(function($controller) {
-          var scope = {}
-          var ctrl = $controller('bricksController', {$scope:scope});
-
+        it('should create brickList with some bricks', function() {
           expect(scope.bricksList).toBeDefined();
           expect(scope.bricksList.length).toBeGreaterThan(1);
-        }))
+        })
 
     });
 
-    describe('bricksController and shapesService integration test', function(){
+    describe('bricksController and shapesService', function(){
 
-        it('should create shapeList with 3 shapes', inject(function($controller) {
-          var scope = {}
-          var ctrl = $controller('bricksController', {$scope:scope});
-
+        it('should create shapeList with some shapes', function() {
           expect(scope.shapesList).toBeDefined();
           expect(scope.shapesList.length).toBeGreaterThan(1);
-        }))
+        })
 
     });
 
-    describe('bricksController and colorsService integration test', function(){
+    describe('bricksController and colorsService', function(){
 
-        it('should create colorsList with 3 colors', inject(function($controller) {
-          var scope = {}
-          var ctrl = $controller('bricksController', {$scope:scope});
-
+        it('should create colorsList with some colors', function() {
           expect(scope.colorsList).toBeDefined();
           expect(scope.colorsList.length).toBeGreaterThan(1);
-        }))
+        })
 
     });
 
