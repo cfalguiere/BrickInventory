@@ -5,7 +5,7 @@ describe('bricksController integration test', function(){
 
     beforeEach(module('BrickInventoryApp'));
 
-    beforeEach( inject(function($controller)  {
+    beforeEach(inject(function($controller)  {
       scope = {}
       ctrl = $controller('bricksController', {$scope:scope});
       bricksList = scope.bricksList;
