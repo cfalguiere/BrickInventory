@@ -3,22 +3,28 @@ angular.module('BrickInventoryApp.services', [])
      var self = this;
 
      var colors = [
-       {name:'Black', id:999},
-       {name:'White', id:999},
-       {name:'Red', id:5},
-       {name:'Brown', id:88},
-       {name:'Green', id:999},
-       {name:'Yellow', id:999},
-       {name:'Undefined', id:0}
+       {name:'Undefined',    id:0},
+       {name:'Yellow',       id:3},
+       {name:'Red',          id:5},
+       {name:'Black',        id:11},
+       {name:'Transparent',  id:12},
+       {name:'Lime',         id:34},
+       {name:'Brown',        id:88},
+       {name:'White',        id:999}
      ];
 
     this.getColorName = function(id) {
       function match(anId) {
         return anId == id;
       }
-      return colors
+      matches = colors
               .filter( function (element) { return match(element.id); } )
-              .map( function (element) {return element.name;} )[0];
+
+      if (matches.length == 1)
+        name = matches[0].name;
+      else
+        name = id
+      return name
     }
 
 

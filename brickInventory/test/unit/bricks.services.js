@@ -26,13 +26,26 @@ describe('colorsService test', function(){
     })
 
 
-    describe('when I call getColorName(5)', function(){
+    describe('when I call getColorName(id)', function(){
         beforeEach(module('BrickInventoryApp.services'));
-        it('returns Red', inject(function(colorsService){
 
-          expect( colorsService.getColorName(5) ).toEqual( "Red" ) ;
+        describe('if 5 (id exists)', function(){
 
-        }))
+            it('returns Red', inject(function(colorsService){
+
+              expect( colorsService.getColorName(5) ).toEqual( "Red" ) ;
+
+            }))
+        })
+
+        describe('if -1 (id is not know yet)', function(){
+
+            it('returns id', inject(function(colorsService){
+
+              expect( colorsService.getColorName(-1) ).toEqual( '-1' ) ;
+
+            }))
+        })
     })
 
 
