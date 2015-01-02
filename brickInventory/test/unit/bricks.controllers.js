@@ -10,7 +10,13 @@ describe('bricksController test', function(){
         beforeEach( inject(function($controller)  {
           scope = {}
           ctrl = $controller('bricksController', {$scope:scope});
-          bricksList = scope.bricksList;
+          scope.bricksList = [ { groupName:"Brick", shapeFilter:false },
+                               { groupName:"Robotics", shapeFilter:false },
+                               { groupName:"Gear", shapeFilter:false },
+                               { groupName:"Brick", shapeFilter:false },
+                               { groupName:"Axle", shapeFilter:false }
+                             ]
+          bricksList = scope.bricksList
         }))
 
         it('should set all shapeFilters to true if unselected', function() {
@@ -24,10 +30,12 @@ describe('bricksController test', function(){
         it('should set shapeFilter to true for Brick and false for other shapes', inject(function($controller) {
           scope.filterByShape("Brick");
 
+          var hidden = bricksList.filter( function (element) { return element.shapeFilter == false } )
           var matches = bricksList.filter( function (element) { return element.shapeFilter == true } )
           expect(matches.length).toBe( 2 );
-          expect(bricksList[4].shapeFilter).toBe( true );
-          expect(bricksList[5].shapeFilter).toBe( true );
+          expect(hidden.length).toBe( 3 );
+          expect(bricksList[0].shapeFilter).toBe( true );
+          expect(bricksList[3].shapeFilter).toBe( true );
         }))
     })
 
@@ -39,10 +47,17 @@ describe('bricksController test', function(){
         beforeEach( inject(function($controller)  {
           scope = {}
           ctrl = $controller('bricksController', {$scope:scope});
+          scope.bricksList = [ { colorId:1, colorFilter:false },
+                               { colorId:5, colorFilter:false },
+                               { colorId:2, colorFilter:false },
+                               { colorId:5, colorFilter:false },
+                               { colorId:3, colorFilter:false }
+                             ]
           bricksList = scope.bricksList;
         }))
 
         it('should set all colorFilters to true if unselected', function() {
+          scope.filterByColor( {name:'Red', id:5} );
           scope.filterByColor( null );
 
           var matches = bricksList.filter( function (element) { return element.colorFilter == true } )
@@ -54,9 +69,11 @@ describe('bricksController test', function(){
           scope.filterByColor( {name:'Red', id:5} );
 
           var matches = bricksList.filter( function (element) { return element.colorFilter == true } )
+          var hidden = bricksList.filter( function (element) { return element.colorFilter == false } )
+          expect(hidden.length).toBe( 3 );
           expect(matches.length).toBe( 2 );
-          expect(bricksList[4].shapeFilter).toBe( true );
-          expect(bricksList[5].shapeFilter).toBe( true );
+          expect(bricksList[1].colorFilter).toBe( true );
+          expect(bricksList[3].colorFilter).toBe( true );
         })
 
     })
