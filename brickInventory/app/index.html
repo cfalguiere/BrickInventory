@@ -36,9 +36,11 @@
            <div class="panel-body">
   <table class="table">
     <thead>
-      <tr><th colspan="2"></th>
-          <th>Id</th>
-          <th>Type</th>
+      <tr>
+          <th></th>
+          <!-- <th colspan="2"></th> -->
+          <!-- <th>Id</th> -->
+          <!-- <th>Type</th> -->
           <th>Shape</th>
           <th>Color</th>
           <th>Name</th>
@@ -48,12 +50,12 @@
     </thead>
     <tbody>
       <tr ng-repeat="brick in bricksList" ng-show="(brick.show && brick.colorFilter && brick.shapeFilter)">
-        <td>{{$index + 1}}</td>
+        <!-- <td>{{$index + 1}}</td> -->
         <td><img src="img/bricks/{{brick.item.itemId}}.gif" /></td>
-	    <td>{{brick.item.itemId}}</td>
-	    <td>{{brick.item.itemType}}</td>
+	    <!-- <td>{{brick.item.itemId}}</td>  -->
+	    <!-- <td>{{brick.item.itemType}}</td>  -->
 	    <td>{{brick.item.groupName}}</td>
-        <td>{{brick.item.colorName}}</td>
+        <td>{{brick.colorName}}</td>
         <td>{{brick.item.itemName}}</td>
         <td>{{brick.count}}/{{brick.item.quantity}} </td>
 	    <td><button class="btn btn-default" ng-click="found(brick)">Found</button></td>
