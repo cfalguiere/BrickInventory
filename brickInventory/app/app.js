@@ -14,6 +14,7 @@
 angular.module('BrickInventoryApp', [
   'BrickInventoryApp.controllers',
   'BrickInventoryApp.services',
+  'BrickInventoryApp.loaders',
   'BrickInventoryApp.factories'
 ]);
 

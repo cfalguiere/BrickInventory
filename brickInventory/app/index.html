@@ -49,13 +49,13 @@
     <tbody>
       <tr ng-repeat="brick in bricksList" ng-show="(brick.show && brick.colorFilter && brick.shapeFilter)">
         <td>{{$index + 1}}</td>
-        <td><img src="img/bricks/{{brick.itemId}}.gif" /></td>
-	    <td>{{brick.itemId}}</td>
-	    <td>{{brick.itemType}}</td>
-	    <td>{{brick.groupName}}</td>
-        <td>{{brick.colorName}}</td>
-        <td>{{brick.itemName}}</td>
-        <td>{{brick.count}}/{{brick.quantity}} </td>
+        <td><img src="img/bricks/{{brick.item.itemId}}.gif" /></td>
+	    <td>{{brick.item.itemId}}</td>
+	    <td>{{brick.item.itemType}}</td>
+	    <td>{{brick.item.groupName}}</td>
+        <td>{{brick.item.colorName}}</td>
+        <td>{{brick.item.itemName}}</td>
+        <td>{{brick.count}}/{{brick.item.quantity}} </td>
 	    <td><button class="btn btn-default" ng-click="found(brick)">Found</button></td>
       </tr>
     </tbody>
@@ -65,7 +65,8 @@
   <script src="app.js"></script>
   <!--<script src="js/services.js"></script>-->
   <script src="bricksController.js"></script>
-  <script src="services/bricksfactory.js"></script>
+  <script src="services/bricksFactory.js"></script>
+  <script src="services/loaders.js"></script>
   <script src="services/services.js"></script>
              </div>
         </div>
