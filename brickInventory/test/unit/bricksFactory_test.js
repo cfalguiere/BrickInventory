@@ -38,15 +38,15 @@ describe('bricksFactory test', function(){
 
         it('and bricks have groupNames', inject(function(bricksFactory){
 
-           expect( bricksFactory[0].item.groupName ).toBeDefined( ) ;
-           //TODO chercher sur la valeur a un sens
+           var items = bricksFactory.filter( function(e) { return e.item.itemId == "3003" } )
+           expect( items[0].item.groupName ).toBe( "Brick" ) ;
 
         }))
 
         it('and bricks have colorNames', inject(function(bricksFactory){
 
-           expect( bricksFactory[0].colorName ).toBeDefined( ) ;
-          //TODO chercher sur la valeur a un sens
+           var items = bricksFactory.filter( function(e) { return e.item.itemId == "3003" } )
+           expect( items[0].colorName ).toBe( "Red" ) ;
 
         }))
     })
