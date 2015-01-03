@@ -1,6 +1,57 @@
+'use strict';
 describe('bricksController test', function(){
 
     beforeEach(module('BrickInventoryApp'));
+
+    describe('when found is used ', function(){
+        var scope
+        var ctrl
+        var bricksList
+
+        beforeEach( inject(function($controller)  {
+          scope = {}
+          ctrl = $controller('bricksController', {$scope:scope});
+          scope.bricksList = [ { item: { quantity: 1 }, show:true , count: 0 },
+                               { item: { quantity: 2 }, show:true , count: 0 }
+                             ]
+          bricksList = scope.bricksList
+        }))
+
+        it('should increment the brick count', function() {
+          var brick = bricksList[1];
+          expect( brick.count ).toEqual( 0 )
+          expect( brick.item.quantity ).toEqual( 2 )
+
+          scope.found(brick)
+          expect( brick.count ).toEqual( 1 )
+
+          scope.found(brick)
+          expect( brick.count ).toEqual( 2 )
+        })
+
+        it('should show the brick while quantity is not reached', function() {
+          var brick = bricksList[1];
+          expect( brick.show ).toBe( true );
+          expect( brick.item.quantity ).toEqual( 2 )
+
+          scope.found(brick)
+          expect( brick.show ).toBe( true );
+       })
+
+        it('should hide the brick when quantity is reached', function() {
+          var brick = bricksList[1];
+          expect( brick.show ).toBe( true );
+          expect( brick.item.quantity ).toEqual( 2 )
+
+          scope.found(brick)
+          expect( brick.show ).toBe( true );
+
+          scope.found(brick)
+          expect( brick.show ).toBe( false );
+        })
+
+
+    })
 
     describe('when shapeFilter is used ', function(){
         var scope

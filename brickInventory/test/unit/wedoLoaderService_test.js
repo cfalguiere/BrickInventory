@@ -22,6 +22,7 @@ describe('wedoLoaderService test', function(){
         it('and bricks have attributes', function() {
 
           var item = itemList[0];
+          //expect( item  ).toBe(  1 )
           expect( item.itemType ).toBeDefined( )
           expect( item.itemId ).toBeDefined( )
           expect( item.itemName ).toBeDefined( )
@@ -70,6 +71,20 @@ describe('wedoLoaderService test', function(){
 
           var items = itemList.filter( function(e) { return e.itemId == "8883-1" } )
           expect( items[0].groupName ).toBe( "Robotics" ) ;
+
+        })
+
+        xit('and groupName of brick 4185 is Belt', function() {
+
+          var items = itemList.filter( function(e) { return e.itemId == "4185" } )
+          expect( items[0].groupName ).toBe( "Belt" ) ;
+
+        })
+
+        xit('and groupName of brick 3743 is Gear', function() {
+
+          var items = itemList.filter( function(e) { return e.itemId == "3743" } )
+          expect( items[0].groupName ).toBe( "Gear" ) ;
 
         })
 
