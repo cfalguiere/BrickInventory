@@ -1,3 +1,4 @@
+'use strict';
 describe('BrickInventory End-2-End App', function() {
 
   describe('Main view', function() {
