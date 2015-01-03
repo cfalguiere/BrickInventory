@@ -31,9 +31,9 @@ describe('wedoLoaderService test', function(){
 
         })
 
-        it('and brick 3003 is correct ', function() {
+        it('and brick 3003 red is correct ', function() {
 
-          var items = itemList.filter( function(e) { return e.itemId == "3003" } )
+          var items = itemList.filter( function(e) { return e.itemId == "3003" && e.colorId == "5"} )
           expect( items.length ).toBe( 1 )
 
           var item = items[0]
@@ -74,21 +74,61 @@ describe('wedoLoaderService test', function(){
 
         })
 
-        xit('and groupName of brick 4185 is Belt', function() {
+        it('and groupName of brick 4185 is Belt', function() {
 
           var items = itemList.filter( function(e) { return e.itemId == "4185" } )
           expect( items[0].groupName ).toBe( "Belt" ) ;
 
         })
 
-        xit('and groupName of brick 3743 is Gear', function() {
+        it('and groupName of brick 3743 is Gear', function() {
 
           var items = itemList.filter( function(e) { return e.itemId == "3743" } )
           expect( items[0].groupName ).toBe( "Gear" ) ;
 
         })
 
+        it('and groupName of brick 6575 is  (Cam)', function() {
 
+          var items = itemList.filter( function(e) { return e.itemId == "6575" } )
+          expect( items[0].groupName ).toBe( "Gear" ) ;
+
+        })
+
+        it('and groupName of brick 4519 is Axle', function() {
+
+          var items = itemList.filter( function(e) { return e.itemId == "4519" } )
+          expect( items[0].groupName ).toBe( "Axle" ) ;
+
+        })
+
+        it('and groupName of brick 4485 is Minifig', function() {
+
+          var items = itemList.filter( function(e) { return e.itemId == "4485" } )
+          expect( items[0].groupName ).toBe( "Minifig" ) ;
+
+        })
+
+        it('and groupName of brick 973px126c01 is Minifig (Torso)', function() {
+
+          var items = itemList.filter( function(e) { return e.itemId == "973px126c01" } )
+          expect( items[0].groupName ).toBe( "Minifig" ) ;
+
+        })
+
+        it('and groupName of brick 973px126c01 is Minifig (Hips and Legs)', function() {
+
+          var items = itemList.filter( function(e) { return e.itemId == "970c00" } )
+          expect( items[0].groupName ).toBe( "Minifig" ) ;
+
+        })
+
+        it('and groupName of brick 42022 is Slope', function() {
+
+          var items = itemList.filter( function(e) { return e.itemId == "42022" } )
+          expect( items[0].groupName ).toBe( "Slope" ) ;
+
+        })
 
 
     })

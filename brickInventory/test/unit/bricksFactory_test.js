@@ -45,7 +45,7 @@ describe('bricksFactory test', function(){
 
         it('and bricks have colorNames', inject(function(bricksFactory){
 
-           var items = bricksFactory.filter( function(e) { return e.item.itemId == "3003" } )
+           var items = bricksFactory.filter( function(e) { return e.item.itemId == "3003" && e.item.colorId == "5" } )
            expect( items[0].colorName ).toBe( "Red" ) ;
 
         }))

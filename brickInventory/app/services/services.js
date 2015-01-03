@@ -4,11 +4,16 @@ angular.module('BrickInventoryApp.services', [])
 
      var colors = [
        {name:'Undefined',    id: '0'},
+       {name:'White',        id: '1'},
+       {name:'Beige',        id: '2'},
        {name:'Yellow',       id: '3'},
        {name:'Red',          id: '5'},
+       {name:'Green',        id: '6'},
        {name:'Black',        id: '11'},
        {name:'Transparent',  id: '12'},
        {name:'Lime',         id: '34'},
+       {name:'Dark Gray',    id: '85'},
+       {name:'Light Gray',   id: '86'},
        {name:'Brown',        id: '88'},
        {name:'White',        id: '999'}
      ];
