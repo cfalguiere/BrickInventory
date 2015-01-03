@@ -8,32 +8,40 @@
 <body ng-app="BrickInventoryApp" ng-controller="bricksController" >
     <div class="panel panel-default">
         <div class="panel-heading">Brick Inventory</div>
-            <div class="panel-body" style="float:left">
+        <div class="panel-body" style="float:left">
 
-                <form ng-submit="resetCount()" >
-                   <input type="submit" value="Reset Count">
-                </form>
+            <form ng-submit="resetCount()" >
+                <input type="submit" value="Reset Count">
+            </form>
+        </div>
+
+        <div class="panel-body">
+            <form ng-submit="resetFilters()" >
+                &nbsp;
+                Filters:
+                &nbsp;
+                <input type="submit" value="Reset Filters">
+                <select ng-model="selectedColor" ng-options="color.name for color in colorsList"
+                        ng-click="filterByColor(selectedColor)">
+                    <option value="">-- choose color --</>
+                    </select>
+                <select ng-model="selectedShape" ng-options="shape for shape in shapesList"
+                        ng-click="filterByShape(selectedShape)">
+                    <option value="">-- choose shape --</>
+                    </select>
+            </form>
+         </div>
+
+         <div class="panel-body">
+            <div style="margin-top: -2em">
+                <label>&nbsp;Items: {{currentCount}} / {{totalCount}}</label>
+                <progress value="{{progressBar}}" max="100"  style="margin-left: 2em"></progress>
+                <label style="margin-left: 3em">&nbsp;{{progressBar}}%  {{progressStatus}}</label>
             </div>
-
-            <div class="panel-body">
-              <form ng-submit="resetFilters()" >
-                    &nbsp;
-                   Filters:
-                   &nbsp;
-                   <input type="submit" value="Reset Filters">
-                   <select ng-model="selectedColor" ng-options="color.name for color in colorsList"
-                           ng-click="filterByColor(selectedColor)">
-                       <option value="">-- choose color --</>
-                   </select>
-                   <select ng-model="selectedShape" ng-options="shape for shape in shapesList"
-                           ng-click="filterByShape(selectedShape)">
-                      <option value="">-- choose shape --</>
-                   </select>
-                </form>
-            </div>
+         </div>
 
 
-           <div class="panel-body">
+        <div class="panel-body" style="margin-top: -2em">
   <table class="table">
     <thead>
       <tr>
@@ -50,7 +58,8 @@
         <!-- <td>{{$index + 1}}</td> -->
 	    <td><button class="btn btn-default" ng-click="found(brick)">Found</button></td>
         <td ng-click="found(brick)"><img src="img/bricks/{{brick.item.itemId}}.gif" /></td>
-        <td ng-click="found(brick)">{{brick.count}}/{{brick.item.quantity}} </td>
+        <td>{{brick.count}}/{{brick.item.quantity}} <br>
+          <button class="btn btn-default" ng-click="foundAll(brick)">x</button></td>
 	    <td>{{brick.item.groupName}}</td>
         <td>{{brick.colorName}}</td>
         <td>{{brick.item.itemName}}</td>
@@ -67,7 +76,6 @@
   <script src="services/bricksFactory.js"></script>
   <script src="services/loaders.js"></script>
   <script src="services/services.js"></script>
-             </div>
         </div>
     </div>
 </body>

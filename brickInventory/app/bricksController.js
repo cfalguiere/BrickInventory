@@ -4,7 +4,6 @@ angular.module('BrickInventoryApp.controllers', [])
     var self = this;
 
     $scope.bricksList = bricksFactory;
-    //$scope.colorsList = colorsService.fillColorNames($scope.bricksList);
 
     $scope.colorsList = colorsService.selectColors($scope.bricksList);
     $scope.selectedColor = null;
@@ -12,10 +11,27 @@ angular.module('BrickInventoryApp.controllers', [])
     $scope.shapesList = shapesService.selectShapes($scope.bricksList);
     $scope.selectedShape = null;
 
+    $scope.totalCount = bricksFactory.reduce( function (acc, currenItem) { return acc += currenItem.item.quantity }  , 0)
+    $scope.currentCount = 0
+    $scope.progressBar = 0
+    $scope.progressStatus = ""
+
+    function incrementCount(brick, qty) {
+        brick.count += qty
+        brick.show = brick.count < brick.item.quantity
+        $scope.currentCount += qty
+        $scope.progressBar = Math.round(100 * $scope.currentCount / $scope.totalCount)
+        if ( $scope.progressBar == 100) $scope.progressStatus = "Done!"
+    }
+
     $scope.found = function(brick) {
-	    //alert("Found " + brick.itemName);
-      brick.count++
-      brick.show = brick.count < brick.item.quantity
+	      //alert("Found " + brick.itemName);
+        incrementCount(brick, 1)
+    };
+
+    $scope.foundAll = function(brick) {
+        var rest =  brick.item.quantity - brick.count
+        incrementCount(brick, rest)
     };
 
     $scope.filterByColor = function(selectedColor) {
@@ -57,8 +73,11 @@ angular.module('BrickInventoryApp.controllers', [])
 	    angular.forEach($scope.bricksList, function(brick) {
         brick.count = 0;
         brick.show = true;
-      } )
-      self.resetFilters();
+      })
+      //this.resetFilters(); // fait planter le test
+      $scope.resetFilters();
+      $scope.currentCount = 0
+      $scope.progressBar = 0
     };
 });
 

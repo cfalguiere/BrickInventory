@@ -51,4 +51,30 @@ describe('bricksFactory test', function(){
         }))
     })
 
+
+    describe('when I test a mock', function(){
+
+        beforeEach(module('BrickInventoryApp.services'));
+        beforeEach(module('BrickInventoryApp.factories'));
+
+        beforeEach(function () {
+           var loaderDependency =  {
+                load: function () {
+                  return [ 1, 2, 3 ]
+                }
+           }
+
+           module(function ($provide) {
+              $provide.value('wedoLoaderService', loaderDependency)
+           })
+        })
+
+
+        it('returns the number of items of the mock', inject(function(bricksFactory){
+
+          expect( bricksFactory.length ).toBe( 3 )
+
+        }))
+    })
+
 });

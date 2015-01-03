@@ -1,24 +1,61 @@
 'use strict';
-describe('bricksController test', function(){
+describe('In bricksController', function(){
+    var scope
+    var ctrl
 
     beforeEach(module('BrickInventoryApp'));
 
-    describe('when found is used ', function(){
-        var scope
-        var ctrl
-        var bricksList
+    describe('when page opens', function() {
+        beforeEach(function () {
+           module(function ($provide) {
+             $provide.value('bricksFactory', [ {item: { quantity:1}}, {item: { quantity:2}}] )
+           })
+        })
 
         beforeEach( inject(function($controller)  {
           scope = {}
           ctrl = $controller('bricksController', {$scope:scope});
-          scope.bricksList = [ { item: { quantity: 1 }, show:true , count: 0 },
+        }))
+
+        it('should have list of bricks', function() {
+          expect( scope.bricksList.length ).toBe( 2 )
+        })
+
+        it('should compute the total count', function() {
+          expect( scope.totalCount ).toBe( 3 );
+        })
+
+        it('should set the currentCount and progress to 0', function() {
+          expect( scope.currentCount ).toBe( 0 );
+          expect( scope.progressBar ).toBe( 0 );
+        })
+
+        it('should show the blank status ', function() {
+          expect( scope.progressStatus ).toBe( "" );
+       })
+
+    })
+
+    describe('when found is used ', function(){
+        var scope
+        var ctrl
+
+        beforeEach(function () {
+           module(function ($provide) {
+             $provide.value('bricksFactory', [ { item: { quantity: 1 }, show:true , count: 0 },
                                { item: { quantity: 2 }, show:true , count: 0 }
-                             ]
-          bricksList = scope.bricksList
+                             ])
+           })
+        })
+
+        beforeEach( inject(function($controller)  {
+          scope = {}
+          ctrl = $controller('bricksController', {$scope:scope});
         }))
 
         it('should increment the brick count', function() {
-          var brick = bricksList[1];
+          var brick = scope.bricksList[1];
+          expect( brick ).toBeDefined( )
           expect( brick.count ).toEqual( 0 )
           expect( brick.item.quantity ).toEqual( 2 )
 
@@ -30,7 +67,7 @@ describe('bricksController test', function(){
         })
 
         it('should show the brick while quantity is not reached', function() {
-          var brick = bricksList[1];
+          var brick = scope.bricksList[1];
           expect( brick.show ).toBe( true );
           expect( brick.item.quantity ).toEqual( 2 )
 
@@ -39,7 +76,7 @@ describe('bricksController test', function(){
        })
 
         it('should hide the brick when quantity is reached', function() {
-          var brick = bricksList[1];
+          var brick = scope.bricksList[1];
           expect( brick.show ).toBe( true );
           expect( brick.item.quantity ).toEqual( 2 )
 
@@ -51,6 +88,30 @@ describe('bricksController test', function(){
         })
 
 
+        it('should increment the current count', function() {
+           var brick = scope.bricksList[1];
+           expect( scope.currentCount ).toBe( 0 );
+           scope.found(brick)
+           expect( scope.currentCount ).toBe( 1 );
+        })
+
+        it('should increment the progressBar (rounded)', function() {
+           var brick = scope.bricksList[1];
+           expect( scope.progressBar ).toBe( 0 );
+           scope.found(brick)
+           expect( scope.progressBar ).toBe( 33 );
+        })
+
+        it('should set the progressStatus to Done! when progressBar reach 100%', function() {
+           var brick1 = scope.bricksList[0];
+           var brick2 = scope.bricksList[1];
+           expect( scope.progressStatus ).toBe( '' );
+           scope.found(brick1)
+           scope.found(brick2)
+           scope.found(brick2)
+           expect( scope.progressBar ).toBe( 100 );
+           expect( scope.progressStatus ).toBe( "Done!" );
+        })
     })
 
     describe('when shapeFilter is used ', function(){
@@ -127,6 +188,78 @@ describe('bricksController test', function(){
           expect(bricksList[3].colorFilter).toBe( true );
         })
 
+    })
+
+    describe('when reset count is used ', function(){
+        beforeEach(function () {
+           module(function ($provide) {
+             $provide.value('bricksFactory', [ { item: { quantity: 1 }, show:true , count: 0 },
+                               { item: { quantity: 2 }, show:true , count: 0 }
+                             ])
+           })
+        })
+
+        beforeEach( inject(function($controller)  {
+            scope = {}
+            ctrl = $controller('bricksController', {$scope:scope});
+        }))
+
+        it("should reset currentCount, progressBar, progressStatus and item's count", function() {
+            var brick = scope.bricksList[1];
+
+            scope.found(brick)
+            expect( brick.count ).toBeGreaterThan( 0 )
+            expect( scope.currentCount ).toBeGreaterThan( 0 );
+            expect( scope.progressBar ).toBeGreaterThan( 0 );
+
+            scope.resetCount()
+            expect( brick.count ).toEqual( 0 )
+            expect( scope.currentCount ).toBe( 0 );
+            expect( scope.progressBar ).toBe( 0 );
+            expect( scope.progressStatus).toBe( "" );
+
+       })
+    })
+
+    describe('when foundAll is used ', function(){
+        var scope
+        var ctrl
+
+        beforeEach(function () {
+           module(function ($provide) {
+             $provide.value('bricksFactory', [ { item: { quantity: 1 }, show:true , count: 0 },
+                               { item: { quantity: 2 }, show:true , count: 0 }
+                             ])
+           })
+        })
+
+        beforeEach( inject(function($controller)  {
+          scope = {}
+          ctrl = $controller('bricksController', {$scope:scope});
+        }))
+
+        it('should set the count to quantity and behave as if the quantity were reached', function() {
+            var brick = scope.bricksList[1];
+            expect( brick ).toBeDefined( )
+            expect( brick.count ).toEqual( 0 )
+            expect( brick.item.quantity ).toEqual( 2 )
+
+            scope.foundAll(brick)
+            expect( brick.count ).toEqual( 2 )
+            expect( brick.show ).toBe( false );
+            expect( scope.currentCount ).toBe( 2 );
+            expect( scope.progressBar ).toBe( 67 );
+        })
+
+        it('should set the progressStatus to Done! when progressBar reach 100%', function() {
+           var brick1 = scope.bricksList[0];
+           var brick2 = scope.bricksList[1];
+           expect( scope.progressStatus ).toBe( '' );
+           scope.found(brick1)
+           scope.foundAll(brick2)
+           expect( scope.progressBar ).toBe( 100 );
+           expect( scope.progressStatus ).toBe( "Done!" );
+        })
     })
 
 });
