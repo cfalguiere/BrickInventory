@@ -6,7 +6,9 @@ angular.module('BrickInventoryApp.factories', [])
     var itemList = wedoLoaderService.load()
     brickList = itemList.map( function(item) {
         var colorName = colorsService.getColorName(item.colorId)
-        return { item: item, colorName: colorName, count: 0, colorFilter: true, shapeFilter: true, show: true }
+        var showGroupButton = item.quantity > 1
+        return { item: item, colorName: colorName, count: 0, colorFilter: true, shapeFilter: true,
+                 show: true, showGroupButton: showGroupButton }
     })
 
     function compareByQuantityDesc (a, b) {

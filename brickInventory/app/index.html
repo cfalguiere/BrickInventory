@@ -56,10 +56,12 @@
     <tbody>
       <tr ng-repeat="brick in bricksList" ng-show="(brick.show && brick.colorFilter && brick.shapeFilter)">
         <!-- <td>{{$index + 1}}</td> -->
-	    <td><button class="btn btn-default" ng-click="found(brick)">Found</button></td>
+	    <td>
+            <button class="btn btn-default" ng-click="found(brick)">&nbsp;1&nbsp;</button>
+            <br>
+            <button class="btn btn-default" ng-click="foundAll(brick)" ng-show="brick.showGroupButton">All</button></td>
         <td ng-click="found(brick)"><img src="img/bricks/{{brick.item.itemId}}.gif" /></td>
-        <td>{{brick.count}}/{{brick.item.quantity}} <br>
-          <button class="btn btn-default" ng-click="foundAll(brick)">x</button></td>
+        <td>{{brick.count}}/{{brick.item.quantity}} </td>
 	    <td>{{brick.item.groupName}}</td>
         <td>{{brick.colorName}}</td>
         <td>{{brick.item.itemName}}</td>

@@ -49,6 +49,7 @@ describe('bricksFactory test', function(){
            expect( items[0].colorName ).toBe( "Red" ) ;
 
         }))
+
     })
 
 
@@ -72,12 +73,20 @@ describe('bricksFactory test', function(){
         })
 
 
-        it('It should have a 2 bricks and they are sorter by desc quantity and asc shape', inject(function(bricksFactory){
+        it('should have a 2 bricks and they are sorter by desc quantity and asc shape', inject(function(bricksFactory){
 
             expect( bricksFactory.length ).toBe( 3 )
             expect( bricksFactory[0].item.itemId ).toBe( 3 )
             expect( bricksFactory[1].item.itemId ).toBe( 2 )
             expect( bricksFactory[2].item.itemId ).toBe( 1 )
+
+        }))
+
+        it('and bricks have showGroupButton to true if quantity is more than 1', inject(function(bricksFactory){
+
+           expect( bricksFactory[0].showGroupButton ).toBe( true )
+           expect( bricksFactory[1].showGroupButton ).toBe( false )
+           expect( bricksFactory[2].showGroupButton ).toBe( false )
 
         }))
     })
