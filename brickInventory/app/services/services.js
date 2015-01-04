@@ -31,6 +31,19 @@ angular.module('BrickInventoryApp.services', [])
       return name
     }
 
+    this.getColorById = function(id) {
+      function match(anId) {
+        return anId == id;
+      }
+      matches = colors.filter( function (element) { return match(element.id); } )
+
+      if (matches.length == 1)
+        color = matches[0];
+      else
+        color = null
+      return color
+    }
+
 
     function uniqueColorIds(brickList) {
         var seen = {};

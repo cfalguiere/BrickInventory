@@ -34,26 +34,38 @@ angular.module('BrickInventoryApp.controllers', [])
         incrementCount(brick, rest)
     };
 
+
+    function applyColorFilter(aColor) {
+        angular.forEach($scope.bricksList, function(brick) {
+          brick.colorFilter = (brick.item.colorId == aColor);
+        })
+    }
+
     $scope.filterByColor = function(selectedColor) {
       if (selectedColor == null) {
-        angular.forEach($scope.bricksList, function(brick) {
-          brick.colorFilter = true;
-        } )
+          angular.forEach($scope.bricksList, function(brick) {
+            brick.colorFilter = true;
+          })
       } else {
-        angular.forEach($scope.bricksList, function(brick) {
-          brick.colorFilter = (brick.item.colorId == selectedColor.id);
-        } )
+          applyColorFilter(selectedColor.id)
       }
     };
 
-    $scope.filterByShape = function(selectedShape) {
-      if (selectedShape == null) {
+    $scope.filterByColorId = function(aColorId) {
+       applyColorFilter(aColorId)
+       $scope.selectedColor = colorsService.getColorById(aColorId)
+    };
+
+    $scope.filterByShape = function(aShape) {
+      //alert("filterByShape " + aShape)
+      $scope.selectedShape = aShape
+      if (aShape == null) {
         angular.forEach($scope.bricksList, function(brick) {
           brick.shapeFilter = true;
         } )
       } else {
         angular.forEach($scope.bricksList, function(brick) {
-          brick.shapeFilter = (brick.item.groupName == selectedShape);
+          brick.shapeFilter = (brick.item.groupName == aShape);
         } )
       }
     };

@@ -61,5 +61,29 @@ describe('colorsService test', function(){
     })
 
 
+
+    describe('when I call getColorById(id)', function(){
+        beforeEach(module('BrickInventoryApp.services'));
+
+        describe('if 5 (id exists)', function(){
+
+            it('returns Red', inject(function(colorsService){
+
+              expect( colorsService.getColorById('5') ).toEqual( { name: "Red", id: '5' } ) ;
+
+            }))
+        })
+
+        describe('if -1 (id is not know yet)', function(){
+
+            it('returns id', inject(function(colorsService){
+
+              expect( colorsService.getColorById('-1') ).toEqual( null ) ;
+
+            }))
+        })
+    })
+
+
 });
 

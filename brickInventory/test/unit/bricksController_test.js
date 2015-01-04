@@ -156,7 +156,7 @@ describe('In bricksController', function(){
         var ctrl
         var bricksList
 
-        beforeEach( inject(function($controller)  {
+         beforeEach( inject(function($controller)  {
           scope = {}
           ctrl = $controller('bricksController', {$scope:scope});
           scope.bricksList = [ { item: { colorId: '1' }, colorFilter:false },
@@ -188,6 +188,62 @@ describe('In bricksController', function(){
           expect(bricksList[3].colorFilter).toBe( true );
         })
 
+    })
+
+
+
+    describe('when colorFilterByColorId is used instead', function(){
+
+        var scope
+        var ctrl
+        var bricksList
+
+        beforeEach(function () {
+          var colorServiceDependency =  {
+            getColorById: function (id) {
+              //alert("been here with " + id)
+              return {name:'Red', id: '5'}
+            },
+            getColorName: function (id) {
+              return 'Red'
+            },
+            selectColors: function () {
+              return [ {name:'Red', id: '5'}  ]
+            }
+          }
+
+          module(function ($provide) {
+            $provide.value('colorsService', colorServiceDependency)
+          })
+        })
+
+        beforeEach( inject(function($controller)  {
+          scope = {}
+          ctrl = $controller('bricksController', {$scope:scope});
+          scope.bricksList = [ { item: { colorId: '1' }, colorFilter:false },
+                               { item: { colorId: '5' }, colorFilter:false },
+                               { item: { colorId: '2' }, colorFilter:false },
+                               { item: { colorId: '5' }, colorFilter:false },
+                               { item: { colorId: '3' }, colorFilter:false }
+                             ]
+          bricksList = scope.bricksList;
+        }))
+
+        it('should have the same behavior than filterByColor', function() {
+          scope.filterByColorId( '5' );
+
+          var matches = bricksList.filter( function (element) { return element.colorFilter == true } )
+          var hidden = bricksList.filter( function (element) { return element.colorFilter == false } )
+          expect(hidden.length).toBe( 3 );
+          expect(matches.length).toBe( 2 );
+          expect(bricksList[1].colorFilter).toBe( true );
+          expect(bricksList[3].colorFilter).toBe( true );
+        })
+
+        it('should set selectedColor', function() {
+          scope.filterByColorId( '5' );
+          expect(scope.selectedColor.name).toBe( 'Red' )
+        })
     })
 
     describe('when reset count is used ', function(){
