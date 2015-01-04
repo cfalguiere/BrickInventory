@@ -62,6 +62,11 @@ angular.module('BrickInventoryApp.services', [])
 
       colorList = colors.filter( function (element) { return isInIndex(element.id); } )
 
+      function compareByName(a, b) {
+        return a.name.localeCompare( b.name )
+      }
+
+      colorList.sort(compareByName)
 
       return colorList;
     }
@@ -87,7 +92,7 @@ angular.module('BrickInventoryApp.services', [])
     }
 
     this.selectShapes = function(brickList) {
-      return uniqueShapes(brickList);
+      return uniqueShapes(brickList).sort();
     }
 
 });

@@ -6,16 +6,26 @@ describe('colorsService test', function(){
         beforeEach(module('BrickInventoryApp.services'));
         it('returns a list of color tuples', inject(function(colorsService){
 
-          var brickList = [  { item: { colorId: '0' }} , { item: { colorId: '5' }} ];
+          var brickList = [  { item: { colorId: '5' }} , { item: { colorId: '0' }} ];
 
-          expect( colorsService.selectColors(brickList) ).toEqual( [ { name: "Undefined", id: '0' }, { name: "Red", id: '5'} ]) ;
+          expect( colorsService.selectColors(brickList) ).toEqual( [ { name: "Red", id: '5' }, { name: "Undefined", id: '0'} ]) ;
 
         }))
+
+        it('and they are sorted by color name', inject(function(colorsService){
+
+          var brickList = [ { item: { colorId: '0' }} , { item: { colorId: '5' }}  ];
+
+          expect( colorsService.selectColors(brickList) ).toEqual( [ { name: "Red", id: '5' }, { name: "Undefined", id: '0'} ]) ;
+
+        }))
+
     })
 
 
     describe('when I call selectColorIds', function(){
         beforeEach(module('BrickInventoryApp.services'));
+
         it('returns 5 0', inject(function(colorsService){
 
           var brickList = [ { item: { colorId: '0' }} , { item: { colorId: '5' }}  ];
@@ -23,6 +33,8 @@ describe('colorsService test', function(){
           expect( colorsService.selectColorIds(brickList) ).toEqual( [ '0', '5' ] ) ;
 
         }))
+
+
     })
 
 

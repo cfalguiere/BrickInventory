@@ -11,6 +11,14 @@ describe('shapesService test', function(){
           expect( shapesService.selectShapes(brickList) ).toEqual( [ "Brick", "Minifigure"  ]) ;
 
         }))
+
+        it('and they are sorted by name', inject(function(shapesService){
+
+           var brickList = [ { item: {groupName: "Gear"} }, { item: {groupName: "Minifigure"} }, { item: {groupName: "Brick"} } ];
+
+           expect( shapesService.selectShapes(brickList) ).toEqual( [ "Brick", "Gear", "Minifigure"  ]) ;
+
+        }))
     })
 
 

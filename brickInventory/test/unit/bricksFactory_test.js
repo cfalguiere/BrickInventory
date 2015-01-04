@@ -52,7 +52,7 @@ describe('bricksFactory test', function(){
     })
 
 
-    describe('when I test a mock', function(){
+    describe('when factory is created (using a mock loader)', function(){
 
         beforeEach(module('BrickInventoryApp.services'));
         beforeEach(module('BrickInventoryApp.factories'));
@@ -60,7 +60,9 @@ describe('bricksFactory test', function(){
         beforeEach(function () {
            var loaderDependency =  {
                 load: function () {
-                  return [ 1, 2, 3 ]
+                  return [ { itemId: 1, groupName: "B", quantity: 1},
+                           { itemId: 2, groupName: "A", quantity: 1},
+                           { itemId: 3, groupName: "C", quantity: 2} ]
                 }
            }
 
@@ -70,9 +72,12 @@ describe('bricksFactory test', function(){
         })
 
 
-        it('returns the number of items of the mock', inject(function(bricksFactory){
+        it('It should have a 2 bricks and they are sorter by desc quantity and asc shape', inject(function(bricksFactory){
 
-          expect( bricksFactory.length ).toBe( 3 )
+            expect( bricksFactory.length ).toBe( 3 )
+            expect( bricksFactory[0].item.itemId ).toBe( 3 )
+            expect( bricksFactory[1].item.itemId ).toBe( 2 )
+            expect( bricksFactory[2].item.itemId ).toBe( 1 )
 
         }))
     })
