@@ -1,0 +1,11 @@
+	<script>
+var x = document.getElementById("shapeSelect");
+x.addEventListener("change", myFocusFunction, true);
+
+function myFocusFunction() {
+	document.getElementById("shapeSelect").blur();
+	document.getElementById("shapeSelect").change();
+	document.getElementById("filters").style.backgroundColor = "yellow";
+}
+
+</script>
