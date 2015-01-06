@@ -21,12 +21,16 @@ sudo apt-get -y install nodejs
 sudo apt-get install nodejs-legacy
 sudo apt-get -y install npm
 
+npm update
+
 echo '######################'
 echo 'Installing yeoman'
 echo '######################'
 
 npm install -g yo bower grunt-cli
 npm install -g generator-angular
+
+npm update
 
 echo '######################'
 echo 'Installing http-server'
@@ -59,6 +63,12 @@ sudo npm install protractor -g
 # java used by selenium webdriver
 sudo apt-get install -y default-jre
 sudo webdriver-manager update
+
+echo '######################'
+echo 'Installing Docker'
+echo '######################'
+
+sudo apt-get install -y docker.io
 
 echo '######################'
 
