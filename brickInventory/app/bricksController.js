@@ -41,19 +41,28 @@ angular.module('BrickInventoryApp.controllers', [])
         })
     }
 
-    $scope.filterByColor = function(selectedColor) {
-      if (selectedColor == null) {
+    function resetColorFilter() {
           angular.forEach($scope.bricksList, function(brick) {
             brick.colorFilter = true;
           })
+    }
+
+    $scope.filterByColor = function(selectedColor) {
+      if (selectedColor == null) {
+          resetColorFilter()
       } else {
           applyColorFilter(selectedColor.id)
       }
     };
 
     $scope.filterByColorId = function(aColorId) {
-       applyColorFilter(aColorId)
-       $scope.selectedColor = colorsService.getColorById(aColorId)
+      if (aColorId == null) {
+          resetColorFilter()
+          $scope.selectedColor = null
+      } else {
+         applyColorFilter(aColorId)
+         $scope.selectedColor = colorsService.getColorById(aColorId)
+      }
     };
 
     $scope.filterByShape = function(aShape) {
