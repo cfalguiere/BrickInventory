@@ -12,10 +12,9 @@ angular.module('BrickInventoryApp.services', [])
        {name:'Black',        id: '11'},
        {name:'Transparent',  id: '12'},
        {name:'Lime',         id: '34'},
-       {name:'Dark Gray',    id: '85'},
-       {name:'Light Gray',   id: '86'},
-       {name:'Brown',        id: '88'},
-       {name:'White',        id: '999'}
+       {name:'DarkGray',     id: '85'},
+       {name:'LightGray',    id: '86'},
+       {name:'Brown',        id: '88'}
      ];
 
     this.getColorName = function(id) {

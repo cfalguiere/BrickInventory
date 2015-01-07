@@ -21,43 +21,65 @@
 <body ng-app="BrickInventoryApp" ng-controller="bricksController" >
     <div class="panel panel-default">
         <div class="panel-heading"><span style="font-size: 1.5em;color: #006666;">Brick Inventory</span></div>
-        <div class="panel-body" style="float:left;">
-            <form ng-submit="resetCount()" >
-                <input type="submit" value="Reset Count">
-            </form>
-        </div>
 
         <div class="panel-body">
-            <form ng-submit="resetFilters()" >
-                &nbsp;
-                Filters:
-                &nbsp;
-                <select ng-model="selectedShape" ng-options="shape for shape in shapesList"
-                        ng-click="filterByShape(selectedShape)">
-                    <option value="">-- choose shape --</>
-                </select>
-                <select ng-model="selectedColor" ng-options="color.name for color in colorsList"
-                        ng-click="filterByColor(selectedColor)">
-                    <option value="">-- choose color --</>
-                </select>
-                <input type="submit" value="Reset All Filters">
-            </form>
-         </div>
+           <div class="container">
+               <ul class="row" >
+                   <div class="col-sm-2">
+                        <ul class="row "><label>Set</label></ul>
+                        <ul class="row ">Wedo 9580-1</ul>
+                        <ul class="row ">&nbsp;</ul>
+                        <ul class="row ">
+                            <img src="img/bricks/9580-1.gif" width=100/>
+                        </ul>
+                   </div>
+                   <div class="col-sm-3">
+                        <ul class="row "><label>Briques</label></ul>
+                        <ul class="row ">
+                            <label><span style="font-size: 1.5em;color: #006666;">{{currentCount}} / {{totalCount}}</span></label> items
+                        </ul>
+                        <ul class="row ">
+                            <label><span style="font-size: 1.5em;color: #006666;">{{progressBar}}%
+                                &nbsp;&nbsp;&nbsp;{{progressStatus}}</label>&nbsp;</span>
+                        </ul>
+                        <ul class="row ">
 
-         <div class="panel-body">
-            <div style="margin-top: -2em">
-                <span style="margin-left: 0.5em"><label>Set:</label> Wedo 9580-1</span>
-                <span style="margin-left: 2em;">
-                    <label><span style="font-size: 1.5em;color: #006666;">{{currentCount}} / {{totalCount}}</span></label> items
-                </span>
-                <span style="margin-left: 2em">
-                    <label>&nbsp;<span style="font-size: 1.5em;color: #006666;">{{progressBar}}%</span>
-                        {{progressStatus}}</label>&nbsp;
-                    <progress value="{{progressBar}}" max="100"></progress>
-                </span>
-           </div>
+                            <progress value="{{progressBar}}" max="100"></progress>
+                        </ul>
+                        <ul class="row ">&nbsp;</ul>
+                        <ul class="row ">
+                            <form ng-submit="resetCount()" >
+                                <input type="submit" value="Reset Count">
+                            </form>
+                       </ul>
+                   </div>
+                   <div class="col-sm-4">
+                       <ul class="row" >
+                           <label style="margin-left: 1em">Shape Filter</label>
+                           <span class="glyphicon glyphicon-remove" aria-hidden="true"
+                                 style="float:right;" ng-click="filterByShape(null)" ></span>
+                       </ul>
+                       <ul class="row" >
+                           <div class="col-sm-3" ng-repeat="shape in shapesList">
+                               <img src="img/shapes/{{shape}}.png"
+                                    ng-click="filterByShape(shape)" /> </div>
+                       </ul>
+                   </div>
+                   <div class="col-sm-3">
+                       <ul class="row" >
+                           <label style="margin-left: 1em">Color Filter</label>
+                           <span class="glyphicon glyphicon-remove" aria-hidden="true"
+                                 style="float:right;" ng-click="filterByColorId(null)" ></span>
+                       </ul>
+                       <ul class="row" >
+                           <div class="col-sm-3" ng-repeat="color in colorsList">
+                               <img src="img/colors/{{color.name}}.png"
+                                    ng-click="filterByColorId(color.id)" /> </div>
+                       </ul>
+                   </div>
+               </ul>
+            </div>
          </div>
-
 
         <div class="panel-body" style="margin-top: -1em">
 <div class="table-responsive">
