@@ -25,7 +25,7 @@
         <div class="panel-body">
            <div class="container">
                <ul class="row" >
-                   <div class="col-xs-6 col-sm-2"  style="margin-top: 1em">
+                   <div class="col-xs-6 col-sm-6 col-md-2"  style="margin-top: 1em">
                         <ul class="row "><label>Set</label></ul>
                         <ul class="row ">Wedo 9580-1</ul>
                         <ul class="row ">&nbsp;</ul>
@@ -33,7 +33,7 @@
                             <img src="img/bricks/9580-1.gif" width=100/>
                         </ul>
                    </div>
-                   <div class="col-xs-6 col-sm-3"  style="margin-top: 1em">
+                   <div class="col-xs-6 col-sm-6 col-md-3"  style="margin-top: 1em">
                         <ul class="row "><label>Briques</label></ul>
                         <ul class="row ">
                             <label><span style="font-size: 1.5em;color: #006666;">{{currentCount}} / {{totalCount}}</span></label> items
@@ -53,7 +53,7 @@
                             </form>
                        </ul>
                    </div>
-                   <div class="col-xs-8 col-sm-4"  style="margin-top: 1em">
+                   <div class="col-xs-8 col-sm-8 col-md-4"  style="margin-top: 1em">
                        <ul class="row" >
                            <label>Shape Filter</label>
                            <span ng-if="selectedShape != null" >
@@ -63,13 +63,13 @@
                           </span>
                        </ul>
                        <ul class="row" >
-                           <div class="col-xs-3 col-sm-3" ng-repeat="shape in shapesList">
+                           <div class="col-xs-3 col-sm-3 col-md-3" ng-repeat="shape in shapesList">
                                    <img src="img/shapes/{{shape}}.png"
                                         ng-click="filterByShape(shape)" />
                            </div>
                        </ul>
                    </div>
-                   <div class="col-xs-4 col-sm-3" style="margin-top: 1em">
+                   <div class="col-xs-4 col-sm-4 col-md-3" style="margin-top: 1em">
                        <ul class="row" >
                            <label>Color Filter</label>
                            <span ng-if="selectedColor != null" >
@@ -80,7 +80,7 @@
                            </span>
                        </ul>
                        <ul class="row" >
-                           <div class="col-xs-3 col-sm-3" ng-repeat="color in colorsList">
+                           <div class="col-xs-3 col-sm-3 col-md-3" ng-repeat="color in colorsList">
                                <img src="img/colors/{{color.name}}.png"
                                     ng-click="filterByColorId(color.id)" width="30"/>
                            </div>
@@ -95,27 +95,27 @@
 
                <ul class="row"
                    style="background-color: #EEEEEE;border-color: #EEEEEE; border-style: solid; border-width: 10px;">
-                   <div class="col-xs-4 col-sm-2"></div>
-                   <div class="col-xs-4 col-sm-2"><label>Quantity</label></div>
-                   <div class="col-xs-4 col-sm-2" style="text-align: right;"><label>Type</label></div>
-                   <div class="col-xs-12 col-sm-6"><label>Description</label></div>
+                   <div class="col-xs-4 col-sm-4 col-md-2"></div>
+                   <div class="col-xs-4 col-sm-4 col-md-2"><label>Quantity</label></div>
+                   <div class="col-xs-4 col-sm-4 col-md-2" style="text-align: right;"><label>Type</label></div>
+                   <div class="col-xs-12 col-sm-12 col-md-6"><label>Description</label></div>
                 </ul>
 
                <ul class="row" ng-repeat="brick in bricksList"
                    ng-show="(brick.show && brick.colorFilter && brick.shapeFilter)"
                    style="border-color: #EEEEEE;border-bottom-style: solid;">
-                   <div class="col-xs-4 col-sm-2">
+                   <div class="col-xs-4 col-sm-4 col-md-2">
                        <div style="margin-top: 0.2em;margin-bottom: 0.2em;">
                             <img src="img/bricks/{{brick.item.itemId}}.gif" ng-click="found(brick)" />
                        </div>
                    </div>
-                   <div class="col-xs-5 col-sm-2">
+                   <div class="col-xs-5 col-sm-5 col-md-2">
                        <div style="margin-top: 1em;">
                             <div class="col-xs-12 col-sm-4">
                               {{brick.count}}/{{brick.item.quantity}}
                             </div>
 
-                            <div class="col-xs-12 col-sm-8">
+                            <div class="col-xs-12 col-sm-12 col-md-8">
                                 <button type="button" class="btn btn-default btn-xs" aria-label="Found 1"
                                         ng-click="found(brick)" style="color: #004444;">
                                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -129,13 +129,13 @@
                             </div>
                        </div>
                    </div>
-                   <div class="col-xs-3 col-sm-1">
+                   <div class="col-xs-3 col-sm-3 col-md-2">
                     <div style="margin-top: 0.2em;">
                        <ul class="row" >
-                           <div class="col-xs-6 col-sm-6">
+                           <div class="col-xs-6 col-sm-6 col-md-4">
                                  <img src="img/shapes/{{brick.item.groupName}}.png" width=30/>
                            </div>
-                           <div class="col-xs-6 col-sm-6">
+                           <div class="col-xs-6 col-sm-6 col-md-4">
                                 <span ng-if="selectedShape != null">
                                     <button type="button" class="btn btn-default btn-xs" aria-label="Filter Same"
                                             ng-click="filterByShape(null)" style="margin-left: 0.1em;color: #005555;">
@@ -151,10 +151,10 @@
                            </div>
                        </ul>
                        <ul class="row" >
-                           <div class="col-xs-6 col-sm-6">
+                           <div class="col-xs-6 col-sm-6 col-md-4">
                                   <img src="img/colors/{{brick.colorName}}.png"  width=25/>
                            </div>
-                           <div class="col-xs-6 col-sm-6">
+                           <div class="col-xs-6 col-sm-6 col-md-4">
                                 <span ng-if="selectedColor != null" >
                                     <button type="button" class="btn btn-default btn-xs" aria-label="Filter Same"
                                             ng-click="filterByColorId(null)" style="margin-left: 0.1em;color: #006666;">
@@ -172,7 +172,7 @@
 
                      </div>
                    </div>
-                   <div class="col-xs-12 col-sm-5">
+                   <div class="col-xs-12 col-sm-12 col-md-5">
                        <div style="margin-top: 1em;">
                            {{brick.item.itemName}}
                        </div>
