@@ -43,3 +43,7 @@ tmp
 # Vagrant
 .vagrant
 
+# app build
+docker-run/content/*
+
+

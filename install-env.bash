@@ -69,6 +69,7 @@ echo 'Installing Docker'
 echo '######################'
 
 sudo apt-get install -y docker.io
+sudo docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter
 
 echo '######################'
 

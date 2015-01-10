@@ -1,0 +1,1 @@
+sudo docker run --name nginx_bricks -p 80:80 -d nginx_bricks_image

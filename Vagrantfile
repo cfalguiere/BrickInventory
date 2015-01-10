@@ -13,7 +13,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = "dev"
 
   # forward http-server port to guest
+  # Dev http-server
   config.vm.network "forwarded_port", guest: 8000, host: 8000
+  # http-server runningin docker container
+  config.vm.network "forwarded_port", guest: 80, host: 1080
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+  end
 
   # fix annoying messages about stdin
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
