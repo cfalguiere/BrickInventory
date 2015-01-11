@@ -1,0 +1,8 @@
+version: v1beta2
+containers:
+- name: brickinventoryapp
+  image: cfalguiere/brickinventoryapp
+  ports:
+  - name: http
+    hostPort: 80
+    containerPort: 80
