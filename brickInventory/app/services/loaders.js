@@ -22,6 +22,10 @@ angular.module('BrickInventoryApp.loaders', [])
 
       if (name.indexOf(GRP_BRICK) == 0) {
           groupName = GRP_BRICK
+      } else if (name.indexOf("Technic, Brick") == 0) {
+          groupName = GRP_BRICK
+      } else if (name.indexOf("Technic, Plate") == 0) {
+          groupName = GRP_BRICK
       } else if (name.indexOf("WeDo Robotics") == 0) {
           groupName = GRP_ROBOTICS
       } else if (name.indexOf("Power Functions") == 0) {
