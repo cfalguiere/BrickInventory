@@ -7,7 +7,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # use ubuntu trusty64 box (v14)
-  config.vm.box = "ubuntu-trusty64-virtualbox.box"
+  #config.vm.box = "ubuntu-trusty64-virtualbox.box"
+  config.vm.box = "ubuntu/trusty64"
 
   # give a hostname to the box
   config.vm.hostname = "dev"
