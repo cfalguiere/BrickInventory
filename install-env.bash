@@ -44,25 +44,8 @@ echo 'Installing Test tools'
 echo '######################'
 
 # get rid of "should be installed with -g" messages
-npm install jasmine-node -g
+npm install -g jasmine-node
 
-# used by karma tests
-sudo apt-get -y install firefox
-# used to run firefox headless
-sudo apt-get -y install xvfb
-sudo cp install/xvfb-service.sh /etc/init.d/xvfb
-sudo chmod +x /etc/init.d/xvfb
-sudo /etc/init.d/xvfb start
-
-# bridges firefox to Karma (not required for Chrome ou PhantomJS)
-npm install karma-firefox-launcher --save-dev
-
-sudo npm install protractor -g
-#npm install webdriver-manager
-
-# java used by selenium webdriver
-sudo apt-get install -y default-jre
-sudo webdriver-manager update
 
 echo '######################'
 echo 'Installing Docker'
@@ -74,6 +57,8 @@ sudo docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter
 echo '######################'
 
 echo "Ending at $( date )"
+echo "Run vagrant ssh to connect to the dev environnement, cd /vagrant and use npm commands (check package.json scripts)"
+
 
 exit
 
