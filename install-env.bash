@@ -46,6 +46,8 @@ echo '######################'
 # get rid of "should be installed with -g" messages
 npm install -g jasmine-node
 
+# work around a problem with karma on phantomJS
+sudo apt-get -y install libfontconfig
 
 echo '######################'
 echo 'Installing Docker'

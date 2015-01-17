@@ -16,8 +16,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # forward http-server port to guest
   # Dev http-server
   config.vm.network "forwarded_port", guest: 8000, host: 8000
+  # Karma http-server
+  config.vm.network "forwarded_port", guest: 9876, host: 9876
   # http-server runningin docker container
   config.vm.network "forwarded_port", guest: 80, host: 1080
+
 
   config.vm.provider "virtualbox" do |v|
     v.memory = 1024
